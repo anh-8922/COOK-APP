@@ -1,5 +1,5 @@
 import express from 'express';
-import {handleListUsers, handleAddUsers} from '../controllers/userControllers.js';
+import {handleListUsers, handleAddUsers} from '../controllers/userController.js';
 
 const userRoutes = express.Router();
 userRoutes.get('/list', handleListUsers);
