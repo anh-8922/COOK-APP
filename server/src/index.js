@@ -2,7 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import dbConnect from './config/db.js';
-import userRoutes from './routes/userRoutes.js';
+import recipesRoutes from './routes/recipesRoutes.js';
+//import userRoutes from './routes/userRoutes.js';
 
 dotenv.config();
 dbConnect();
@@ -11,10 +12,14 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded ({extended : false}));
 
-app.use('/users', userRoutes)
+//app.use('/users', userRoutes);
+app.use('/recipe', recipesRoutes)
+//app.use('/auth', userRoutes)
+//app.use("/uploads", express.static("./server/uploads"));
 
-app.get('/cookbook/list', (req,res) => {
-    res.send('Testing the server')
-})
+//app.get('/cookbook/list', (req,res) => {
+ //   res.send('Testing the server')
+//})
 app.listen(5000, () => console.log('server is set to run at port 5000'))
