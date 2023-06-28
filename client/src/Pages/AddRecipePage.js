@@ -22,8 +22,8 @@ export default function AddNewRecipes ( ) {
     
   if (!e.currentTarget.files[0]) return;
     
-  if (e.currentTarget.files[0].size > 1000000) {
-          alert("This file is bigger than 10kB");
+  if (e.currentTarget.files[0].size > 100000000) {
+          alert("This file is bigger than 1000kB");
           return;
         }
     setImage({
@@ -38,7 +38,8 @@ export default function AddNewRecipes ( ) {
   };
 
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+      e.preventDefault()
       const formData = new FormData();
       formData.append("title", title);
       formData.append("category", category);
@@ -46,18 +47,18 @@ export default function AddNewRecipes ( ) {
         formData.append(`ingredients[${index}]`, ingredient);
       });
       formData.append("instructions", instructions);
-      formData.append("image", image.file);
+      if (image.file) {
+        formData.append("image", image.file);
+        
+      }
+      
 
       for (let pair of formData.entries()) {
         console.log(pair[0] + ": " + pair[1]);
       }
     
       try {
-        const response = await axios.post('/recipes/add', formData, {
-          headers: {
-            "Content-type": "multipart/form-data; charset=UTF-8",
-          }
-        });
+        const response = await axios.post('/recipes/add', formData,);
         setFormSubmitted(true);
         console.log("Response:", response);
       } catch (error) {
@@ -110,10 +111,13 @@ export default function AddNewRecipes ( ) {
               onChange={(e) => setCategory(e.target.value)}
             >
               <option value="">Select a category</option>
-              <option value="breakfast">Breakfast</option>
-              <option value="lunch">Lunch</option>
-              <option value="dinner">Dinner</option>
-              
+              <option value="Breakfast">Breakfast</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Appetizer">Appetizer</option>
+              <option value="Desserts">Desserts</option>
+              <option value="Main Recipes">Main Recipes</option>
+              <option value="Quick Recipes">Quick Recipes</option>
+              <option value="Special Recipes">Special Recipes</option>
         
             </select>
             <div>

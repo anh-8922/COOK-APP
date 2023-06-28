@@ -17,9 +17,11 @@ export const handleAddRecipe = async (req, res) => {
   console.log("handleAddRecipe:", req.body);
 
   try {
-    let { title, category, ingredients, instructions, image } = req.body;
+    let {title, category, ingredients, instructions, image } = req.body;
     
-
+    if (req.file) {
+      image  = req.file.filename;
+    }
     const addNewRecipe = await Recipe.create({
       title,
       category,
