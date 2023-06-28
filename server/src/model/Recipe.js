@@ -23,7 +23,9 @@ const recipeSchema = new Schema({
             required:true
         }
     ,
-
+    image: {
+        type: String,
+        required: true}
 })
 
 export default mongoose.model('Recipe', recipeSchema)

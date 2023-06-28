@@ -6,7 +6,9 @@ export default function Layout({children}) {
     return(
         <div className="mainbody">
             <Navigator/>
-            <div>{children}</div>
+            <div style={{backgroundColor: 'pink', height: '100%'}}> 
+                {children}
+            </div>
             <Footer/>
         </div>
     )

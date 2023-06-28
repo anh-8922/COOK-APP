@@ -15,9 +15,9 @@ app.use(express.json());
 app.use(express.urlencoded ({extended : false}));
 
 //app.use('/users', userRoutes);
-app.use('/recipe', recipesRoutes)
+app.use('/recipes', recipesRoutes) 
 //app.use('/auth', userRoutes)
-//app.use("/uploads", express.static("./server/uploads"));
+app.use("/uploads", express.static("./server/uploads"));
 
 //app.get('/cookbook/list', (req,res) => {
  //   res.send('Testing the server')

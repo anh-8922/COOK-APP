@@ -3,17 +3,37 @@ import {handleListRecipes,
         handleAddRecipe,
         handleEditRecipe,
         handeleDeleteRecipe,
-        } from '../controllers/recipeController.js'
+        handleSearchRecipes} from '../controllers/recipeController.js'
+import multer from "multer";
 
-const recipesrouter = express.Router()
+const storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+          cb(null, "./server/uploads");
+        },
+        filename: function (req, file, cb) {
+          const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+      
+          let extension = "";
+      
+          // get the rest of string after 5th character
+          if (file.mimetype.includes("image"))
+            extension = "." + file.mimetype.slice(6);
+          console.log("extension:", extension);
+      
+          console.log("INSIDE STORAGE OBJECT: file=", file);
+      
+          cb(null, file.fieldname + "-" + uniqueSuffix + extension);
+        },
+      });
 
-recipesrouter.get('/list', handleListRecipes)
-//recipesrouter.get('/search', handleSearchRecipes)
-recipesrouter.post('/add',  handleAddRecipe)
-recipesrouter.put('/edit', handleEditRecipe)
-recipesrouter.delete('/delete/:id', handeleDeleteRecipe)
+const upload = multer({ storage: storage });
 
-export default recipesrouter
+const router = express.Router()
 
-//upload.single('image'),
-//upload.single('image'),
+router.get('/list', handleListRecipes)
+router.get('/search', handleSearchRecipes)
+router.post('/add', upload.single('image'), handleAddRecipe)
+router.put('/edit', upload.single('image'),handleEditRecipe)
+router.delete('/delete/:id', handeleDeleteRecipe)
+
+export default router
