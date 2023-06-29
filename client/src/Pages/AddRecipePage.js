@@ -1,7 +1,9 @@
 import { useState } from "react";
 import noimage from "../Assets/noimage.png";
 import axios from "axios";
+import MainLayout from '../Layout/MainLayout';
 import { useNavigate } from "react-router-dom";
+import '../Styles/Page.css';
 
 export default function AddNewRecipes ( ) {
 
@@ -68,85 +70,88 @@ export default function AddNewRecipes ( ) {
     
 
     return(
-        <div>
+        <MainLayout>
         
-      <div className='AddNewRecipe'>
-        {!formSubmitted ? (
-          <form onSubmit={handleSubmit}>
-            <label>Add your recipe title:</label>
-            <input
-              type="text"
-              id="title"
-              placeholder="Title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <label>Add your Ingredients:</label>
-            <div>
-              <input 
-                type="text"
-                id='ingredient'
-                value={newIngredient}
-                onChange={(e) => setNewIngredient(e.target.value)}
-                placeholder="Enter an ingredient"
-              />
-              <button type="button" onClick={handleAddIngredient}>Add Ingredient</button>
-            </div>
-            <ul>
-              {ingredients.map((ingredient, index) => (
-                <li key={index}>{ingredient}</li>
-              ))}
-            </ul>
-            <label>Add your Instructions:</label>
-            <textarea
-              type="text"
-              id="instructions"
-              placeholder="Instructions"
-              value={instructions}
-              onChange={(e) => setInstructions(e.target.value)}
-            />
-            <label>Category: </label>
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="">Select a category</option>
-              <option value="Breakfast">Breakfast</option>
-              <option value="Lunch">Lunch</option>
-              <option value="dinner">Dinner</option>
-        
-            </select>
-            <div>
-            <label>Add an image:</label>
-            <input
-              type="file"
-              accept="image/png, image/jpeg"
-              name="image"
-              onChange={handleImageChange}
-            />
-                    <img
-          className="w-[300px] h-[300px] object-cover"
-          src={image.url || noimage}
-          alt=""
-        />
-            </div>
-            <button type="submit">Submit</button>
-          </form>
-        ) : (
-          <div style={{
-                        color:'green', 
-                        fontSize:'3rem', 
-                        display:'flex', 
-                        justifyContent:'center', 
-                        marginTop:'48%', 
-                        alignContent:'center'}}>Recipe submitted successfully!</div>
-        )}
-      </div>
+          <div className='AddNewRecipe'>
+            {!formSubmitted ? (
+              <form className="addForm" onSubmit={handleSubmit}>
+                <label>Add your recipe title:</label>
+                <input
+                  type="text"
+                  id="title"
+                  placeholder="Title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+                <label>Add your Ingredients:</label>
+                <div>
+                  <input 
+                    type="text"
+                    id='ingredient'
+                    value={newIngredient}
+                    onChange={(e) => setNewIngredient(e.target.value)}
+                    placeholder="Enter an ingredient"
+                  />
+                  <button type="button" onClick={handleAddIngredient}>Add Ingredient</button>
+                </div>
+                <ul>
+                  {ingredients.map((ingredient, index) => (
+                    <li key={index}>{ingredient}</li>
+                  ))}
+                </ul>
+                <label>Add your Instructions:</label>
+                <textarea
+                  type="text"
+                  id="instructions"
+                  placeholder="Instructions"
+                  value={instructions}
+                  onChange={(e) => setInstructions(e.target.value)}
+                />
+                <label>Category: </label>
+                <select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                >
+                  <option value="">Select a category</option>
+                  <option value="Breakfast">Breakfast</option>
+                  <option value="Lunch">Lunch</option>
+                  <option value="dinner">Dinner</option>
+            
+                </select>
+                <div className="uploadImage">
+                    <label>Add an image:</label>
+                    <div id="uploadInput">
+                      <input
+                        type="file"
+                        accept="image/png, image/jpeg"
+                        name="image"
+                        onChange={handleImageChange}
+                      />
+                      <img
+                    
+                        src={image.url || noimage}
+                        alt=""
+                      />
+                    </div>
+                    
+                </div>
+                <button type="submit">Submit</button>
+              </form>
+            ) : (
+              <div style={{
+                            color:'green', 
+                            fontSize:'3rem', 
+                            display:'flex', 
+                            justifyContent:'center', 
+                            marginTop:'48%', 
+                            alignContent:'center'}}>Recipe submitted successfully!</div>
+            )}
+          </div>
 
 
 
 
 
-        </div>
+        </MainLayout>
     )
 }
