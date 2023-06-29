@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 //import AddNewRecipes from "../Pages/AddRecipePage";
 import '../Styles/component.css';
 //import { useCookies } from "react-cookie";
+import SearchBar from "./SearchBar";
 
 export default function Navigator() {
     
@@ -11,6 +12,7 @@ export default function Navigator() {
             <NavLink className="NavItems" to="/addrecipe">Add Recipe</NavLink>
             <NavLink className="NavItems" >Blog</NavLink>
             <NavLink className="NavItems" >Login</NavLink>
+            <SearchBar/>
         </div>
     )
 }
