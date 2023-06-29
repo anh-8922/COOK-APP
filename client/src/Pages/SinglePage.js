@@ -1,5 +1,5 @@
 import RecipeItem from "../Components/RecipeItem";
-// import MainLayout from "../Layouts/MainLayout";
+import MainLayout from "../Layout/MainLayout";
 import { Link, useParams } from "react-router-dom";
 import Spinner from "../Components/Spinner";
 import useFetchData from "../CustomHooks/useFetchData";
@@ -24,22 +24,23 @@ export default function SingleRecipePage() {
   const { image, ingredients, instructions, title } = selectedRecipe;
 
   return (
-    
-      <div className="single-page">
-        <RecipeItem
-          title={title}
-          image={image}
-          ingredients={ingredients}
-          instructions={instructions}
-        />
-        <Link to="/">
-          <button style={{
-                        fontSize:'1.5rem', 
-                        backgroundColor:'#D4C79E', 
-                        marginLeft:'5rem', 
-                        padding:'0.8rem',
-                        borderRadius:'0.5rem'}}>Back to Home</button>
-        </Link>
-      </div>
+    <MainLayout>
+        <div className="single-page">
+          <RecipeItem
+            title={title}
+            image={image}
+            ingredients={ingredients}
+            instructions={instructions}
+          />
+          <Link to="/">
+            <button style={{
+                          fontSize:'1.5rem', 
+                          backgroundColor:'pink', 
+                          marginLeft:'5rem', 
+                          padding:'0.8rem',
+                          borderRadius:'0.5rem'}}>Back to Home</button>
+          </Link>
+        </div>
+    </MainLayout>
   )
 }

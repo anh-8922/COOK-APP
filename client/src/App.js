@@ -3,9 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MainPage from './Pages/MainPage';
-import AddNewRecipes from './Pages/AddRecipePage';
-import SingleRecipePage from './Pages/SinglePage';
+import AllRoutes from './AllRoutes';
+
 
 function App() {
 
@@ -26,11 +25,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="background-container">
-        <Routes>
-          <Route exact path="/" element={<MainPage/>}/>
-          <Route path="/addrecipe" element={<AddNewRecipes/>}/>
-          <Route path="/singlerecipepage/:id" element={<SingleRecipePage/>} />
-        </Routes>
+        <AllRoutes/>
       </div>
     </BrowserRouter>
   );

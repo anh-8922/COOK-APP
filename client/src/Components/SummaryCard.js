@@ -1,4 +1,4 @@
-import '../Styles/component.css';
+import '../Styles/summaryCard.css';
 
 export default function SummaryCard (props) {
     const {_id, image, title} =props
