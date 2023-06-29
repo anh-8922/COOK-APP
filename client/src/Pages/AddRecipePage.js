@@ -113,11 +113,7 @@ export default function AddNewRecipes ( ) {
               <option value="">Select a category</option>
               <option value="Breakfast">Breakfast</option>
               <option value="Lunch">Lunch</option>
-              <option value="Appetizer">Appetizer</option>
-              <option value="Desserts">Desserts</option>
-              <option value="Main Recipes">Main Recipes</option>
-              <option value="Quick Recipes">Quick Recipes</option>
-              <option value="Special Recipes">Special Recipes</option>
+              <option value="dinner">Dinner</option>
         
             </select>
             <div>

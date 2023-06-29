@@ -1,5 +1,7 @@
 import Accordion from 'react-bootstrap/Accordion';
 import Breakfast from '../Category/Breakfast';
+import Lunch from '../Category/Lunch.js';
+import Dinner from '../Category/Dinner.js';
 import '../Styles/component.css';
 
 export default function RecipeListTab() {
@@ -22,6 +24,7 @@ export default function RecipeListTab() {
                 <Accordion.Item eventKey="1">
                     <Accordion.Header>Lunch</Accordion.Header>
                     <Accordion.Body>
+                        <Lunch/>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
                     minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -34,6 +37,7 @@ export default function RecipeListTab() {
                 <Accordion.Item eventKey="2">
                     <Accordion.Header>Dinner</Accordion.Header>
                     <Accordion.Body>
+                        <Dinner/>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
                     minim veniam, quis nostrud exercitation ullamco laboris nisi ut
