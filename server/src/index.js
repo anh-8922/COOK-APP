@@ -3,7 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import dbConnect from './config/db.js';
 import recipesRoutes from './routes/recipesRoutes.js';
-//import userRoutes from './routes/userRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+//import authRoutes from './routes/authRoutes.js';
 
 dotenv.config();
 dbConnect();
@@ -17,6 +18,9 @@ app.use(express.urlencoded ({extended : false}));
 //app.use('/users', userRoutes);
 app.use('/recipes', recipesRoutes) 
 //app.use('/auth', userRoutes)
+app.use("/uploads", express.static("./server/uploads"));
+
+app.use('/auth', userRoutes)
 app.use("/uploads", express.static("./server/uploads"));
 
 //app.get('/cookbook/list', (req,res) => {
