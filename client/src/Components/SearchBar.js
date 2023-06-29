@@ -17,17 +17,19 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="SearchInput">
+    <div className="search-box">
+      
+      <button className="btn-search" onClick={handleSearch}>
+        <BsSearch />
+      </button>
       <input
+      className='input-search'
         type="search"
         label="Enter your text"
         placeholder="Search..."
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
       />
-      <button className="btn-search" onClick={handleSearch}>
-        <BsSearch />
-      </button>
     </div>
   );
 }
